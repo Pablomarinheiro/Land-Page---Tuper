@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TuperAI 5.0 — Eleve Seu Potencial</title>
+    <title>TuperAI 5.0 — Software Educacional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
@@ -289,6 +289,28 @@
     <div id="scroll-top" title="Voltar ao topo">↑</div>
 
     <script>
+      // Nome do Site para animação do título
+      const originalTitle = "TuperAI 5.0 — Software Educacional     ";
+      let startIndex = 0;
+      let isRunning = false;
+
+      function animateTitle() {
+        if (isRunning) return; // impede sobreposição de execuções
+        isRunning = true;
+
+        requestAnimationFrame(() => {
+          const part1 = originalTitle.substring(startIndex);
+          const part2 = originalTitle.substring(0, startIndex);
+          document.title = part1 + part2;
+
+          startIndex = (startIndex + 1) % originalTitle.length;
+          isRunning = false;
+        });
+      }
+
+      // A cada 200ms ele "solicita" um frame (em vez de forçar)
+      setInterval(animateTitle, 189);
+
       document.addEventListener("DOMContentLoaded", () => {
         const display = document.getElementById("mentor-display");
         const form = document.getElementById("mentor-form");
